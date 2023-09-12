@@ -1,0 +1,49 @@
+{
+    "name": "pulli/collection-macros",
+    "description": "Macros for the Laravel/Illuminate collection class",
+    "type": "library",
+    "keywords": [
+        "pulli",
+        "collection-macros"
+    ],
+    "homepage": "https://github.com/the-pulli/collection-macros",
+    "authors": [
+        {
+            "name": "PuLLi",
+            "email": "the@pulli.dev",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.2",
+        "illuminate/collections": "^10.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "src/register.php"
+        ],
+        "psr-4": {
+            "Pulli\\CollectionMacros\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pulli\\CollectionMacros\\Test\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "pestphp/pest": "^2.16"
+    }
+}
