@@ -1,4 +1,4 @@
-name: CollectionMacros
+name: Tests
 
 on:
   push:

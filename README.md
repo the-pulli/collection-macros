@@ -1,5 +1,8 @@
 # Useful Laravel collection macros
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/pulli/collection-macros.svg?style=flat-square)](https://packagist.org/packages/pulli/collection-macros)
+![Tests](https://github.com/the-pulli/collection-macros/actions/workflows/ci.yml/badge.svg)
+
 ## Installation
 
 You can pull in the package via composer:
