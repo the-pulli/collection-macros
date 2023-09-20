@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Collection;
+use Pulli\CollectionMacros\Test\Data\ChildObject;
+use Pulli\CollectionMacros\Test\Data\OtherObject;
+use Pulli\CollectionMacros\Test\Data\ParentObject;
 use Pulli\CollectionMacros\Test\Data\TestObject;
 
 describe('mapToCollection macro', function () {
@@ -54,5 +57,41 @@ describe('mapToCollection macro', function () {
                 'name' => 'Jane Doe',
                 'job' => 'Designer',
             ]));
+    });
+
+    it('wraps nested arrays and objects into collection objects', function () {
+       $data = Collection::mapToCollection([
+           new ParentObject(
+               name: 'parent1',
+               children: Collection::make([new ChildObject(name: 'child1')]),
+               other: Collection::make([new OtherObject(value: 'other1')]),
+           ),
+           new ParentObject(
+               name: 'parent2',
+               children: Collection::make([new ChildObject(name: 'child2')]),
+               other: Collection::make([new OtherObject(value: 'other2')]),
+           ),
+       ], true);
+
+       expect($data->toArray())->toEqual([
+           [
+               'name' => 'parent1',
+               'children' => [
+                   ['name' => 'child1'],
+               ],
+               'other' => [
+                   ['value' => 'other1'],
+               ],
+           ],
+           [
+               'name' => 'parent2',
+               'children' => [
+                   ['name' => 'child2'],
+               ],
+               'other' => [
+                   ['value' => 'other2'],
+               ],
+           ],
+       ]);
     });
 });
