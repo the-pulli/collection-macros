@@ -3,7 +3,8 @@
 use Illuminate\Support\Collection;
 
 $macros = [
-  'mapToCollection' => \Pulli\CollectionMacros\Macros\MapToCollection::class
+  'mapToCollection' => \Pulli\CollectionMacros\Macros\MapToCollection::class,
+  'recursiveToArray' => \Pulli\CollectionMacros\Macros\RecursiveToArray::class,
 ];
 
 if (!function_exists('app')) {
