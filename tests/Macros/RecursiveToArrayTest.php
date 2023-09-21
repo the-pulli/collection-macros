@@ -18,7 +18,7 @@ describe('recursiveToArray macro', function () {
                children: Collection::make([new ChildObject(name: 'child2')]),
                other: Collection::make([new OtherObject(value: 'other2')]),
            ),
-       ], true);
+       ]);
 
        expect($data)->toEqual([
            [
