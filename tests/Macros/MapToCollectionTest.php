@@ -73,25 +73,25 @@ describe('mapToCollection macro', function () {
            ),
        ], true);
 
-       expect($data->toArray())->toEqual([
-           [
+       expect($data)->toEqual(new Collection([
+           new Collection([
                'name' => 'parent1',
-               'children' => [
-                   ['name' => 'child1'],
-               ],
-               'other' => [
-                   ['value' => 'other1'],
-               ],
-           ],
-           [
+               'children' => new Collection([
+                   new Collection(['name' => 'child1']),
+               ]),
+               'other' => new Collection([
+                   new Collection(['value' => 'other1']),
+               ]),
+           ]),
+           new Collection([
                'name' => 'parent2',
-               'children' => [
-                   ['name' => 'child2'],
-               ],
-               'other' => [
-                   ['value' => 'other2'],
-               ],
-           ],
-       ]);
+               'children' => new Collection([
+                   new Collection(['name' => 'child2']),
+               ]),
+               'other' => new Collection([
+                   new Collection(['value' => 'other2']),
+               ]),
+           ]),
+       ]));
     });
 });

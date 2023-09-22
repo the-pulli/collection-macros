@@ -20,7 +20,7 @@ describe('recursiveToArray macro', function () {
            ),
        ]);
 
-       expect($data)->toEqual([
+       expect($data)->toBe([
            [
                'name' => 'parent1',
                'children' => [
