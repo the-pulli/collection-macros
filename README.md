@@ -35,5 +35,5 @@ Like `mapToCollection` it maps all arrays/objects recursively to an array.
 
 ```php
 // Item has a toArray() public method, then it can be wrapped into the collection like this:
-$collection = Collection::recursiveToArray(['item1' => Item(), 'item2' => Item()]);
+$array = Collection::recursiveToArray(['item1' => Item(), 'item2' => Item()]);
 ```
