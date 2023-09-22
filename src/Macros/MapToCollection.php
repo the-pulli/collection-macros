@@ -15,7 +15,7 @@ class MapToCollection {
                 }
 
                 if ($deep) {
-                    if (method_exists($ary, 'toArray')) {
+                    if (is_object($ary) && method_exists($ary, 'toArray')) {
                         $ary = Collection::mapToCollection($ary->toArray(), $deep);
                     }
                 }
