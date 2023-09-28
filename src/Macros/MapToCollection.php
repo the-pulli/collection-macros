@@ -9,7 +9,7 @@ class MapToCollection
 {
     public function __invoke(): Closure
     {
-        return function (array $ary, $deep = false): Collection {
+        return function (array $ary, bool $deep = false): Collection {
             $closure = function (&$ary) use ($deep) {
                 if (is_array($ary)) {
                     $ary = Collection::mapToCollection($ary, $deep);
