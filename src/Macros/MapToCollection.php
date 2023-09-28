@@ -5,7 +5,8 @@ namespace Pulli\CollectionMacros\Macros;
 use Closure;
 use Illuminate\Support\Collection;
 
-class MapToCollection {
+class MapToCollection
+{
     public function __invoke(): Closure
     {
         return function (array $ary, $deep = false): Collection {
@@ -14,10 +15,8 @@ class MapToCollection {
                     $ary = Collection::mapToCollection($ary, $deep);
                 }
 
-                if ($deep) {
-                    if (is_object($ary) && method_exists($ary, 'toArray')) {
-                        $ary = Collection::mapToCollection($ary->toArray(), $deep);
-                    }
+                if ($deep && is_object($ary) && method_exists($ary, 'toArray')) {
+                    $ary = Collection::mapToCollection($ary->toArray(), $deep);
                 }
             };
 

@@ -9,7 +9,7 @@ class RecursiveToArray
 {
     public function __invoke(): Closure
     {
-        return function(array $ary): array {
+        return function (array $ary): array {
             $closure = function (&$ary) {
                 if (is_array($ary)) {
                     $ary = Collection::recursiveToArray($ary);
