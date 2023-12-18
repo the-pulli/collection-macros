@@ -28,7 +28,7 @@ $collection = Collection::mapToCollectionFrom([['test' => 1],2,3]);
 $collection->get(0)->get('test'); // returns 1
 
 // Item has a toArray() public method, then it can be wrapped into a collection like this:
-$collection = Collection::mapToCollection([Item(),Item()], true);
+$collection = Collection::mapToCollectionFrom([Item(),Item()], true);
 ```
 
 ### `recursiveToArrayFrom`
