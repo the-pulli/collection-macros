@@ -13,15 +13,17 @@ composer require pulli/collection-macros
 
 ## Macros
 
+- mapToCollectionFrom
 - mapToCollection
+- recursiveToArrayFrom
 - recursiveToArray
 
-### `mapToCollection`
+### `mapToCollectionFrom`
 
 Maps all arrays/objects recursively to a collection object of collections, which allow nested function calling.
 
 ```php
-$collection = Collection::mapToCollection([['test' => 1],2,3]);
+$collection = Collection::mapToCollectionFrom([['test' => 1],2,3]);
 
 $collection->get(0)->get('test'); // returns 1
 
@@ -29,11 +31,11 @@ $collection->get(0)->get('test'); // returns 1
 $collection = Collection::mapToCollection([Item(),Item()], true);
 ```
 
-### `recursiveToArray`
+### `recursiveToArrayFrom`
 
-Like `mapToCollection` it maps all arrays/objects recursively to an array.
+Like `mapToCollectionFrom` it maps all arrays/objects recursively to an array.
 
 ```php
 // Item has a toArray() public method, then it can be wrapped into the collection like this:
-$array = Collection::recursiveToArray(['item1' => Item(), 'item2' => Item()]);
+$array = Collection::recursiveToArrayFrom(['item1' => Item(), 'item2' => Item()]);
 ```

@@ -18,6 +18,10 @@
         "php": ">=8.2",
         "illuminate/collections": "^10.0"
     },
+    "require-dev": {
+        "orchestra/testbench": "^8.17",
+        "pestphp/pest": "^2.16"
+    },
     "license": "MIT",
     "autoload": {
         "files": [
@@ -38,12 +42,16 @@
             "pestphp/pest-plugin": true
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Pulli\\CollectionMacros\\CollectionMacroServiceProvider"
+            ]
+        }
+    },
     "scripts": {
         "test": "vendor/bin/pest"
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require-dev": {
-        "pestphp/pest": "^2.16"
-    }
+    "prefer-stable": true
 }

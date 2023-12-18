@@ -6,13 +6,13 @@ use Pulli\CollectionMacros\Test\Data\OtherObject;
 use Pulli\CollectionMacros\Test\Data\ParentObject;
 use Pulli\CollectionMacros\Test\Data\TestObject;
 
-describe('mapToCollection macro', function () {
+describe('mapToCollectionFrom macro', function () {
     it('wraps all arrays into collection objects', function () {
-        $data = Collection::make([
+        $data = Collection::mapToCollectionFrom([
             ['test' => ['test' => '1.1']],
             ['test' => ['test' => '1.2']],
             ['test' => ['test' => ['test' => '1.3.1']]],
-        ])->mapToCollection();
+        ]);
 
         expect($data[0])->toBeInstanceOf(Collection::class)
             ->and($data[1])->toBeInstanceOf(Collection::class)
@@ -24,10 +24,10 @@ describe('mapToCollection macro', function () {
     });
 
     it('wraps data objects into collection objects', function () {
-        $data = Collection::make([
+        $data = Collection::mapToCollectionFrom([
             new TestObject('John Doe', 'Programmer'),
             new TestObject('Jane Doe', 'Designer'),
-        ])->mapToCollection([], true);
+        ], true);
 
         expect($data[0])->toBeInstanceOf(Collection::class)
             ->and($data[1])->toBeInstanceOf(Collection::class)
@@ -42,10 +42,10 @@ describe('mapToCollection macro', function () {
     });
 
     it('wraps nested data objects into collection objects', function () {
-        $data = Collection::make([
+        $data = Collection::mapToCollectionFrom([
             ['first' => new TestObject('John Doe', 'Programmer')],
             ['second' => new TestObject('Jane Doe', 'Designer')],
-        ])->mapToCollection([], true);
+        ], true);
 
         expect($data[0])->toBeInstanceOf(Collection::class)
             ->and($data[1])->toBeInstanceOf(Collection::class)
@@ -60,7 +60,7 @@ describe('mapToCollection macro', function () {
     });
 
     it('wraps nested arrays and objects into collection objects', function () {
-        $data = Collection::make([
+        $data = Collection::mapToCollectionFrom([
             new ParentObject(
                 name: 'parent1',
                 children: new Collection([new ChildObject(name: 'child1')]),
@@ -71,7 +71,7 @@ describe('mapToCollection macro', function () {
                 children: new Collection([new ChildObject(name: 'child2')]),
                 other: new Collection([new OtherObject(value: 'other2')]),
             ),
-        ])->mapToCollection([], true);
+        ], true);
 
         expect($data)->toEqual(new Collection([
             new Collection([
@@ -92,43 +92,6 @@ describe('mapToCollection macro', function () {
                     new Collection(['value' => 'other2']),
                 ]),
             ]),
-        ]));
-    });
-
-    it('merges additional data to the given one', function () {
-        $data = Collection::make([
-            new ParentObject(
-                name: 'parent1',
-                children: new Collection([new ChildObject(name: 'child1')]),
-                other: new Collection([new OtherObject(value: 'other1')]),
-            ),
-            new ParentObject(
-                name: 'parent2',
-                children: new Collection([new ChildObject(name: 'child2')]),
-                other: new Collection([new OtherObject(value: 'other2')]),
-            ),
-        ])->mapToCollection(['hello' => 'world'], true);
-
-        expect($data)->toEqual(new Collection([
-            new Collection([
-                'name' => 'parent1',
-                'children' => new Collection([
-                    new Collection(['name' => 'child1']),
-                ]),
-                'other' => new Collection([
-                    new Collection(['value' => 'other1']),
-                ]),
-            ]),
-            new Collection([
-                'name' => 'parent2',
-                'children' => new Collection([
-                    new Collection(['name' => 'child2']),
-                ]),
-                'other' => new Collection([
-                    new Collection(['value' => 'other2']),
-                ]),
-            ]),
-            new Collection(['hello' => 'world']),
         ]));
     });
 });

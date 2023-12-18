@@ -10,8 +10,7 @@
 | need to change it using the "uses()" function to bind a different classes or traits.
 |
 */
-
-// uses(Tests\TestCase::class)->in('Feature');
+uses(\Pulli\CollectionMacros\Test\IntegrationTestCase::class)->in(__DIR__);
 
 /*
 |--------------------------------------------------------------------------

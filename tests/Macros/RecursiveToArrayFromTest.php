@@ -5,9 +5,9 @@ use Pulli\CollectionMacros\Test\Data\ChildObject;
 use Pulli\CollectionMacros\Test\Data\OtherObject;
 use Pulli\CollectionMacros\Test\Data\ParentObject;
 
-describe('recursiveToArray macro', function () {
-    it('can call recursiveToArray as method on collection', function () {
-        $collection = Collection::make([
+describe('recursiveToArrayFrom macro', function () {
+    it('wraps nested collection and objects into array', function () {
+        $data = Collection::recursiveToArrayFrom([
             new ParentObject(
                 name: 'parent1',
                 children: Collection::make([new ChildObject(name: 'child1')]),
@@ -20,7 +20,7 @@ describe('recursiveToArray macro', function () {
             ),
         ]);
 
-        expect($collection->recursiveToArray(['hello' => 'world']))->toBe([
+        expect($data)->toBe([
             [
                 'name' => 'parent1',
                 'children' => [
@@ -39,7 +39,6 @@ describe('recursiveToArray macro', function () {
                     ['value' => 'other2'],
                 ],
             ],
-            'hello' => 'world',
         ]);
     });
 });
