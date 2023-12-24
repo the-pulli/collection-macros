@@ -1,7 +1,10 @@
 # Useful Laravel collection macros
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/pulli/collection-macros.svg?style=flat-square)](https://packagist.org/packages/pulli/collection-macros)
-![Tests](https://github.com/the-pulli/collection-macros/actions/workflows/ci.yml/badge.svg)
+[![release](https://img.shields.io/github/release/the-pulli/collection-macros.svg?style=flat-square)](https://github.com/the-pulli/collection-macros/releases)
+[![packagist](https://img.shields.io/packagist/v/pulli/collection-macros.svg?style=flat-square)](https://packagist.org/packages/pulli/collection-macros)
+[![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/the-pulli/collection-macros/blob/main/LICENSE.md)
+[![downloads](https://img.shields.io/packagist/dt/pulli/collection-macros.svg?style=flat-square)](https://packagist.org/packages/pulli/collection-macros)
+![tests](https://github.com/the-pulli/collection-macros/actions/workflows/ci.yml/badge.svg)
 
 ## Installation
 
