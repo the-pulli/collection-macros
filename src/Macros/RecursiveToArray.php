@@ -3,7 +3,6 @@
 namespace Pulli\CollectionMacros\Macros;
 
 use Closure;
-use Illuminate\Support\Collection;
 
 class RecursiveToArray
 {
@@ -11,8 +10,8 @@ class RecursiveToArray
     {
         return function (array $ary = []): array {
             return array_merge(
-                Collection::recursiveToArrayFrom($this->all()),
-                Collection::recursiveToArrayFrom($ary)
+                static::recursiveToArrayFrom($this->all()),
+                static::recursiveToArrayFrom($ary)
             );
         };
     }

@@ -12,17 +12,17 @@ class MapToCollectionFrom
         return function (array $ary, bool $deep = false): Collection {
             $closure = function (&$ary) use ($deep) {
                 if (is_array($ary)) {
-                    $ary = Collection::mapToCollectionFrom($ary, $deep);
+                    $ary = static::mapToCollectionFrom($ary, $deep);
                 }
 
                 if ($deep && is_object($ary) && method_exists($ary, 'toArray')) {
-                    $ary = Collection::mapToCollectionFrom($ary->toArray(), $deep);
+                    $ary = static::mapToCollectionFrom($ary->toArray(), $deep);
                 }
             };
 
             array_walk($ary, $closure);
 
-            return new Collection($ary);
+            return static::make($ary);
         };
     }
 }

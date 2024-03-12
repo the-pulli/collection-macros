@@ -3,7 +3,6 @@
 namespace Pulli\CollectionMacros\Macros;
 
 use Closure;
-use Illuminate\Support\Collection;
 
 class RecursiveToArrayFrom
 {
@@ -12,11 +11,11 @@ class RecursiveToArrayFrom
         return function (array $ary): array {
             $closure = function (&$ary) {
                 if (is_array($ary)) {
-                    $ary = Collection::recursiveToArrayFrom($ary);
+                    $ary = static::recursiveToArrayFrom($ary);
                 }
 
                 if (is_object($ary) && method_exists($ary, 'toArray')) {
-                    $ary = Collection::recursiveToArrayFrom($ary->toArray());
+                    $ary = static::recursiveToArrayFrom($ary->toArray());
                 }
             };
 
