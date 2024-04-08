@@ -18,25 +18,35 @@ composer require pulli/collection-macros
 
 - mapToCollectionFrom
 - mapToCollection
+- positive
 - recursiveToArrayFrom
 - recursiveToArray
 
 ### `mapToCollectionFrom`
 
-Maps all arrays/objects recursively to a collection object of collections, which allow nested function calling.
+Static method: Maps all arrays/objects recursively to a collection object of collections, which allow nested function calling.
 
 ```php
-$collection = Collection::mapToCollectionFrom([['test' => 1],2,3]);
+$collection = Collection::mapToCollectionFrom([['test' => 1], 2, 3]);
 
 $collection->get(0)->get('test'); // returns 1
 
 // Item has a toArray() public method, then it can be wrapped into a collection like this:
-$collection = Collection::mapToCollectionFrom([Item(),Item()], true);
+$collection = Collection::mapToCollectionFrom([Item(), Item()], true);
+```
+
+### `positive`
+
+Returns a boolean value, if the collection contains elements or not.
+
+```php
+Collection::make([1, 2, 3])->positive() // returns true
+Collection::make()->positive() // returns false
 ```
 
 ### `recursiveToArrayFrom`
 
-Like `mapToCollectionFrom` it maps all arrays/objects recursively to an array.
+Static method: Like `mapToCollectionFrom` it maps all arrays/objects recursively to an array.
 
 ```php
 // Item has a toArray() public method, then it can be wrapped into the collection like this:

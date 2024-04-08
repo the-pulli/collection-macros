@@ -11,7 +11,7 @@ class MapToCollection
     {
         return function (array $ary = [], bool $deep = false): Collection {
             $ary = static::mapToCollectionFrom($ary, $deep);
-            $data =  static::mapToCollectionFrom($this->all(), $deep);
+            $data = static::mapToCollectionFrom($this->all(), $deep);
 
             if ($ary->isNotEmpty()) {
                 return $data->merge([$ary]);
