@@ -9,6 +9,10 @@ class CollectionMacroServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        if (! Collection::hasMacro('positive')) {
+            Collection::macro('positive', app(\Pulli\CollectionMacros\Macros\Positive::class)());
+        }
+
         Collection::make($this->macros())
             ->reject(fn (string $class, string $macro) => Collection::hasMacro($macro))
             ->each(fn (string $class, string $macro) => Collection::macro($macro, app($class)()));
