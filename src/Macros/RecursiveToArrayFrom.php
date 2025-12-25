@@ -3,7 +3,18 @@
 namespace Pulli\CollectionMacros\Macros;
 
 use Closure;
+use Illuminate\Support\Collection;
+use Pulli\CollectionMacros\IsArrayable;
 
+/**
+ * Returns recursively all items to array from the given array
+ *
+ * @param  array  $ary
+ *
+ * @mixin Collection
+ *
+ * @return array<mixed, array>
+ */
 class RecursiveToArrayFrom
 {
     public function __invoke(): Closure
@@ -14,7 +25,7 @@ class RecursiveToArrayFrom
                     $ary = static::recursiveToArrayFrom($ary);
                 }
 
-                if (is_object($ary) && method_exists($ary, 'toArray')) {
+                if (IsArrayable::isConvertable($ary)) {
                     $ary = static::recursiveToArrayFrom($ary->toArray());
                 }
             };

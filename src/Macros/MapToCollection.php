@@ -5,6 +5,15 @@ namespace Pulli\CollectionMacros\Macros;
 use Closure;
 use Illuminate\Support\Collection;
 
+/**
+ * Returns all items as Collections
+ *
+ * @param  array  $ary
+ *
+ * @mixin Collection
+ *
+ * @return Collection<mixed, Collection>
+ */
 class MapToCollection
 {
     public function __invoke(): Closure

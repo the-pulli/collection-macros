@@ -10,8 +10,7 @@ readonly class ParentObject
         private string $name,
         private Collection $children,
         private Collection $other,
-    ) {
-    }
+    ) {}
 
     public function toArray(): array
     {

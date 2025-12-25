@@ -3,7 +3,17 @@
 namespace Pulli\CollectionMacros\Macros;
 
 use Closure;
+use Illuminate\Support\Collection;
 
+/**
+ * Returns recursively all items to array
+ *
+ * @param  array  $ary
+ *
+ * @mixin Collection
+ *
+ * @return array<mixed, array>
+ */
 class RecursiveToArray
 {
     public function __invoke(): Closure
