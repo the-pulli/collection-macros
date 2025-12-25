@@ -12,9 +12,9 @@ use Pulli\CollectionMacros\IsArrayable;
  * @param  array  $ary
  * @param  bool  $deep
  *
- * @mixin Collection
+ * @mixin \Illuminate\Support\Collection
  *
- * @return Collection<mixed, Collection>
+ * @return \Illuminate\Support\Collection<mixed, \Illuminate\Support\Collection>
  */
 class MapToCollectionFrom
 {

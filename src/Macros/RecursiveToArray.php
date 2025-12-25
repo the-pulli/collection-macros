@@ -3,14 +3,13 @@
 namespace Pulli\CollectionMacros\Macros;
 
 use Closure;
-use Illuminate\Support\Collection;
 
 /**
  * Returns recursively all items to array
  *
  * @param  array  $ary
  *
- * @mixin Collection
+ * @mixin \Illuminate\Support\Collection
  *
  * @return array<mixed, array>
  */

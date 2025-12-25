@@ -3,7 +3,6 @@
 namespace Pulli\CollectionMacros\Macros;
 
 use Closure;
-use Illuminate\Support\Collection;
 use Pulli\CollectionMacros\IsArrayable;
 
 /**
@@ -11,7 +10,7 @@ use Pulli\CollectionMacros\IsArrayable;
  *
  * @param  array  $ary
  *
- * @mixin Collection
+ * @mixin \Illuminate\Support\Collection
  *
  * @return array<mixed, array>
  */

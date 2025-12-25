@@ -10,9 +10,9 @@ use Illuminate\Support\Collection;
  *
  * @param  array  $ary
  *
- * @mixin Collection
+ * @mixin \Illuminate\Support\Collection
  *
- * @return Collection<mixed, Collection>
+ * @return \Illuminate\Support\Collection<mixed, \Illuminate\Support\Collection>
  */
 class MapToCollection
 {
