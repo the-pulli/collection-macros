@@ -4,6 +4,13 @@ namespace Pulli\CollectionMacros\Macros;
 
 use Closure;
 
+/**
+ * Returns true if the collection has more than one element
+ *
+ * @mixin \Illuminate\Support\Collection
+ *
+ * @return bool
+ */
 class Positive
 {
     public function __invoke(): Closure

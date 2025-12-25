@@ -3,15 +3,16 @@
 namespace Pulli\CollectionMacros;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\ServiceProvider;
 
-class CollectionMacroServiceProvider extends \Illuminate\Support\ServiceProvider
+class CollectionMacroServiceProvider extends ServiceProvider
 {
     use HasMacros;
 
     public function register(): void
     {
-        Collection::make(self::macros())
-            ->reject(fn ($class, $macro) => Collection::hasMacro($macro))
-            ->each(fn ($class, $macro) => Collection::macro($macro, app($class)()));
+        Collection::make($this->macros())
+            ->reject(fn (string $class, string $macro) => Collection::hasMacro($macro))
+            ->each(fn (string $class, string $macro) => Collection::macro($macro, app($class)()));
     }
 }

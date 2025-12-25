@@ -4,7 +4,7 @@ namespace Pulli\CollectionMacros;
 
 trait HasMacros
 {
-    public static function macros(): array
+    public function macros(): array
     {
         return [
             'mapToCollection' => \Pulli\CollectionMacros\Macros\MapToCollection::class,

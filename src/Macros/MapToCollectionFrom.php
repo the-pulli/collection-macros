@@ -4,7 +4,18 @@ namespace Pulli\CollectionMacros\Macros;
 
 use Closure;
 use Illuminate\Support\Collection;
+use Pulli\CollectionMacros\IsArrayable;
 
+/**
+ * Returns all nested array items as Collection
+ *
+ * @param  array  $ary
+ * @param  bool  $deep
+ *
+ * @mixin \Illuminate\Support\Collection
+ *
+ * @return \Illuminate\Support\Collection<mixed, \Illuminate\Support\Collection>
+ */
 class MapToCollectionFrom
 {
     public function __invoke(): Closure
@@ -15,7 +26,7 @@ class MapToCollectionFrom
                     $ary = static::mapToCollectionFrom($ary, $deep);
                 }
 
-                if ($deep && is_object($ary) && method_exists($ary, 'toArray')) {
+                if ($deep && IsArrayable::isConvertable($ary)) {
                     $ary = static::mapToCollectionFrom($ary->toArray(), $deep);
                 }
             };

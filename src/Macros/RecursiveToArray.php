@@ -4,6 +4,15 @@ namespace Pulli\CollectionMacros\Macros;
 
 use Closure;
 
+/**
+ * Returns recursively all items to array
+ *
+ * @param  array  $ary
+ *
+ * @mixin \Illuminate\Support\Collection
+ *
+ * @return array<mixed, array>
+ */
 class RecursiveToArray
 {
     public function __invoke(): Closure
